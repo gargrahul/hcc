@@ -5374,10 +5374,10 @@ hsa_status_t HSACopy::hcc_memory_async_copy_rect(Kalmar::hcCommandKind copyKind,
     range.x=width;
     range.y=height;
 
-    status = hsa_amd_memory_async_copy_rect(&dst, &dstOff, &src, &srcOff, &range, copyAgent, hsa_amd_copy_direction_t(copyKind),depSignalCnt, depSignalCnt ? depSignals:NULL,completion_signal);
-
+    //status = hsa_amd_memory_async_copy_rect(&dst, &dstOff, &src, &srcOff, &range, copyAgent, hsa_amd_copy_direction_t(copyKind),depSignalCnt, depSignalCnt ? depSignals:NULL,completion_signal);
+    status = HSA_STATUS_ERROR;
     if (status != HSA_STATUS_SUCCESS) {
-        throw Kalmar::runtime_exception("hsa_amd_memory_async_copy_rect error", status);
+        //throw Kalmar::runtime_exception("hsa_amd_memory_async_copy_rect error", status);
     }
     DBOUT( DB_CMD2, "  copy setNextKernelNeedsSysAcquire(true)\n");
     hsaQueue()->setNextKernelNeedsSysAcquire(true);
